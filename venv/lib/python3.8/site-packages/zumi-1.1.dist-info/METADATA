@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: zumi
+Version: 1.1
+Summary: Python Library for Zumi. Only working on rasbian
+Home-page: UNKNOWN
+Author: Robolink
+Author-email: info@robolink.com
+License: UNKNOWN
+Keywords: robolink,zumi
+Platform: UNKNOWN
+Requires-Python: >=3.3
+Requires-Dist: smbus2
+
+UNKNOWN
+
+
