@@ -12,11 +12,13 @@ cam = Camera()
 font = cv2.FONT_HERSHEY_PLAIN
 cam.start_camera()
 zumi = Zumi()
-timeLeft = 10
+timeLeft = 60
+
+lookup = [False, False, False, False, False, False]
 
 
 def scanQR():
-    global timeLeft
+    global timeLeft, lookup
     frame = cam.capture()  # take a picture
     h, w, channel = frame.shape  # Get the height and width of the image in pixels
     decodedObjects = pyzbar.decode(frame)  # Run a function that looks for codes in that frame
@@ -26,7 +28,28 @@ def scanQR():
             print("Found ", obj.type)  # Print the type of code (barcode or QR code)
             data = obj.data.decode("utf-8")  # Decode the message
             print("Message: ", data)  # Print the message
-            timeLeft = timeLeft + int(data)
+            qr_id, t = parseQRdata(data)
+            lookup[qr_id] = True
+            timeLeft = timeLeft + int(t)
+
+
+def parseQRdata(txt):
+    ID = txt[0]
+    ID = int(ID)
+    ID = ID - 1
+
+    s = " "
+    i = 0
+    for char in txt:
+        # print(char)
+        if i != 0:
+            if char != ',':
+                s = s + char
+        i = i + 1
+
+    time = int(s)
+
+    return ID, time
 
 
 def main():
