@@ -32,18 +32,26 @@ def scanQR():
 def main():
     global timeLeft, zumi
     print("Let the odds be in your favor ...")
-    lastTime = datetime.datetime.now().second
 
     while (timeLeft > 0):
-        if (datetime.datetime.now().second != lastTime):
-            timeLeft = timeLeft - (abs(datetime.datetime.now().second - lastTime))
-            # timeLeft = timeLeft - 1
-            lastTime = datetime.datetime.now().second
-            print("lost a second... Hurry up: ", timeLeft)
+        start = time.time()
 
         # PUT CONTROLS HERE
-        scanQR()
 
+
+        # Calculate how much time it took for you to choose a drive command
+        # AND time taken to drive to point
+        # timeElapsed = timeToChooseCommand + timeToExecuteCommand
+        end = time.time()
+        timeElapsed = end - start
+        timeLeft = timeLeft - timeElapsed
+
+        print("lost ", timeLeft, "  seconds... Hurry up: ", timeLeft, " left")
+
+        if timeLeft > 0:
+            scanQR()
+
+    # Lost Game
     print("You were not the choosen one!")
     cam.close()
 
