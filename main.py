@@ -37,7 +37,18 @@ def main():
         start = time.time()
 
         # PUT CONTROLS HERE
+        direction = input("Please enter a command: ")
 
+        if direction == "w":
+            zumi.forward()
+        if direction == "s":
+            zumi.reverse()
+        if direction == "a":
+            zumi.turn_left()
+        if direction == "d":
+            zumi.turn_right()
+        if direction == "q":
+            zumi.stop()
 
         # Calculate how much time it took for you to choose a drive command
         # AND time taken to drive to point
