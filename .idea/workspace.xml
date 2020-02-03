@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ede5bf49-689f-499e-8b8e-ac0368460c14" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +29,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -53,6 +55,8 @@
       <updated>1580663640615</updated>
       <workItem from="1580663641717" duration="1767000" />
       <workItem from="1580669059859" duration="266000" />
+      <workItem from="1580676830865" duration="413000" />
+      <workItem from="1580688294715" duration="3760000" />
     </task>
     <servers />
   </component>

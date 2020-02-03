@@ -1,5 +1,4 @@
 from zumi.zumi import Zumi
-import datetime
 import cv2
 import numpy as np
 import pyzbar.pyzbar as pyzbar
@@ -7,10 +6,15 @@ import IPython.display
 import PIL.Image
 import time
 from zumi.util.camera import Camera
+from zumi.util.screen import Screen
+from zumi.personality import Personality
+from zumi.protocol import Note
+
 
 cam = Camera()
 font = cv2.FONT_HERSHEY_PLAIN
 cam.start_camera()
+zumi.mpu.calibrate_MPU()
 zumi = Zumi()
 timeLeft = 60
 
@@ -51,27 +55,36 @@ def parseQRdata(txt):
 
     return ID, time
 
+def run_command( direction ):
+    global zumi
+    if direction == "w":
+        zumi.forward()
+    if direction == "s":
+        zumi.reverse()
+    if direction == "a":
+        zumi.turn_left()
+    if direction == "d":
+        zumi.turn_right()
+    if direction == "q":
+        zumi.stop()
+
 
 def main():
     global timeLeft, zumi
     print("Let the odds be in your favor ...")
+
+    valid_commands = ['w', 's', 'd', 'a', 'q']
 
     while (timeLeft > 0):
         start = time.time()
 
         # PUT CONTROLS HERE
         direction = input("Please enter a command: ")
+        while( direction not in valid_commands ):
+            print("Wrong... try again: ")
+            direction = input("please enter valid command: ")
+        run_command(direction)
 
-        if direction == "w":
-            zumi.forward()
-        if direction == "s":
-            zumi.reverse()
-        if direction == "a":
-            zumi.turn_left()
-        if direction == "d":
-            zumi.turn_right()
-        if direction == "q":
-            zumi.stop()
 
         # Calculate how much time it took for you to choose a drive command
         # AND time taken to drive to point
@@ -88,6 +101,7 @@ def main():
     # Lost Game
     print("You were not the choosen one!")
     cam.close()
+
 
 
 if __name__ == "__main__":
