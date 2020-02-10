@@ -10,15 +10,14 @@ from zumi.util.screen import Screen
 from zumi.personality import Personality
 from zumi.protocol import Note
 
-
+zumi = Zumi()
 cam = Camera()
 font = cv2.FONT_HERSHEY_PLAIN
 cam.start_camera()
 zumi.mpu.calibrate_MPU()
-zumi = Zumi()
 timeLeft = 60
 
-lookup = [False, False, False, False, False, False]
+lookup = [False, False, False, False, False, False,False]
 
 
 def scanQR():
@@ -83,7 +82,7 @@ def main():
         while( direction not in valid_commands ):
             print("Wrong... try again: ")
             direction = input("please enter valid command: ")
-        run_command(direction)
+        
 
 
         # Calculate how much time it took for you to choose a drive command
@@ -96,6 +95,7 @@ def main():
         print("lost ", timeLeft, "  seconds... Hurry up: ", timeLeft, " left")
 
         if timeLeft > 0:
+            run_command(direction)
             scanQR()
 
     # Lost Game
